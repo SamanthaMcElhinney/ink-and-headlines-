@@ -29,11 +29,11 @@
 }
 
 .news-author{
-    justify-content: flex-start;
-    margin-right:auto;
+    margin: 0;
 }
 
 .news-date {
+    margin:10px;
     justify-content: flex-end;
     margin-left: auto;
 }

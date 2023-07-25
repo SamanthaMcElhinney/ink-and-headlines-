@@ -1,35 +1,18 @@
 import './Search.css'
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Search = ({handleSearch}) => {
+const Search = ({handleSearch, resetSearch}) => {
     const [searchQuery, setSearchQuery] = useState("")
-
-//     const[filterValue, setFilterValue] = useState("")
-//     const[searchTerm, setSearchTerm] = useState("")
-
-//     useEffect(()=> {
-//         getNews(filterValue)
-//     },[filterValue, getNews])
-//   const selections = (
-//     <select
-//       name="filter"
-//       className="filter"
-//       id="filter"
-//       value={filterValue}
-//       onChange={(event) => handleChange(event)}
-//     >
-//       <option value="business">Business</option>
-//       <option value="entertainment">Entertainment</option>
-//       <option value="general health">General Health</option>
-//       <option value="science">Science</option>
-//       <option value="technology">Technology</option>
-//     </select>
-//   );
+    const [error, setError] = useState('')
+     const navigate = useNavigate();
 
 const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(searchQuery)
     console.log(searchQuery, "SQline 32")
+    resetSearch()
+     navigate("/results");
 }
 
 return (
