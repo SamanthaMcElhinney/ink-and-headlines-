@@ -1,0 +1,39 @@
+.news-card {
+    border: 1px solid black;
+    padding: 2px 4%;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 5%;
+    height: 30rem;
+    width: 25rem;
+}
+
+.new-title {
+    font-family: 'Newsreader', serif;
+}
+
+.news-image {
+    filter: grayscale(100%);
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+    border: solid black 2px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.news-description{
+    font-size: 10pt;
+}
+
+.news-author{
+    justify-content: flex-start;
+    margin-right:auto;
+}
+
+.news-date {
+    justify-content: flex-end;
+    margin-left: auto;
+}

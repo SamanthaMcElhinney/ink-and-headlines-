@@ -19,7 +19,7 @@ const News = ({ articles }) => {
     <h1>Something went wrong! Our apologies, please try again later</h1>
   );
 
-  return <div>{newsToRender}</div>;
+  return <div className="news-container">{newsToRender}</div>;
 };
 
 export default News;

@@ -1,15 +1,22 @@
 import './NewsCard.css'
 
 const NewsCard = ({id, author, title, description, image, date}) => {
-    return(
-        <div>
-            <img src={image} alt={title}></img>
-            <h2>{title}</h2>
-            <h3>{author || 'Author unknown'}</h3>
-            <p>{description}</p>
-            <h3>{date}</h3>
-        </div>
-    )
+
+ const formattedDate = () => {
+    return new Date(`${date}`).toLocaleString();
+
+  }
+    return (
+      <div className="news-card">
+        <h2 className="news-title">{title}</h2>
+        <p className="news-description">{description}</p>
+        <h6 className="news-author">
+          Written by: {author || "Author unknown"}
+        </h6>
+        <img className="news-image" src={image} alt={title}></img>
+        <h4 className="news-date">{formattedDate()}</h4>
+      </div>
+    );
 }
 
 export default NewsCard
