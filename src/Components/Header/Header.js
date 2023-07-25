@@ -6,7 +6,7 @@ import React from 'react'
 export default function Header() {
   return (
     <div className="image-container">
-      <img src={logo1} alt="Logo Ink & Headlines"/>
+      <img className="image-header"src={logo1} alt="Logo Ink & Headlines"/>
     </div>
   )
 }
