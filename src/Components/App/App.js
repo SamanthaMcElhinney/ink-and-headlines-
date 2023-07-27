@@ -6,6 +6,8 @@ import { getNews, searchNews } from "../../apiCalls";
 import News from "../News/News";
 import Search from "../Search/Search";
 import Error from "../Error/Error";
+import NewsDetails from "../NewsDetail/NewsDetail"
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [news, setNews] = useState([]);
@@ -13,19 +15,37 @@ function App() {
   const [search, setSearch] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searched, setSearched] = useState(false);
+  const [selectedArticleId, setSelectedArticleId] = useState(null); 
 
   useEffect(() => {
-    getNews().then((data) => setNews(data.articles));
-    setSearched(false)
+    getNews().then((data) => {
+      const articlesWithIds = data.articles.map((article) => ({
+        ...article,
+        id: uuidv4(),
+      }));
+      setNews(articlesWithIds);
+    });
+    setSearched(false);
   }, []);
 
-  const handleSearch = (searchTerm) => {
-    setSearchTerm(searchTerm);
-    searchNews(searchTerm).then((data) => {
-      data.status === "ok" ? setSearch(data.articles) : setError(data.message);
-      console.log("Search Results:", search);
-      setSearched(true);
-    });
+const handleSearch = (searchTerm) => {
+  setSearchTerm(searchTerm);
+  searchNews(searchTerm).then((data) => {
+    if (data.status === "ok") {
+      const articlesWithIds = data.articles.map((article) => ({
+        ...article,
+        id: uuidv4(),
+      }));
+      setSearch(articlesWithIds);
+    } else {
+      setError(data.message);
+    }
+    setSearched(true);
+  });
+};
+
+  const handleReadMore = (articleId) => {
+    setSelectedArticleId(articleId);
   };
 
   const resetSearch = () => {
@@ -39,16 +59,32 @@ function App() {
       <Header />
       <Search handleSearch={handleSearch} resetSearch={resetSearch} />
       <Routes>
-        <Route path="/" element={<News articles={news} />} />
+        <Route
+          path="/"
+          element={<News articles={news} handleReadMore={handleReadMore} />}
+        />
         <Route
           path="/results"
           element={
-            <News articles={searched === true ? search : news} searched={search} />
+            <News
+              articles={searched === true ? search : news}
+              handleReadMore={handleReadMore}
+            />
           }
         />
-        <Route path="*" element={
-          <Error message={"url"}/>
-        }></Route>
+        <Route
+          path="/details/:id"
+          element={
+            <NewsDetails
+              article={
+                searched === true
+                  ? search.find((article) => article.id === selectedArticleId)
+                  : news.find((article) => article.id === selectedArticleId)
+              }
+            />
+          }
+        />
+        <Route path="*" element={<Error message={"url"} />}></Route>
       </Routes>
     </main>
   );

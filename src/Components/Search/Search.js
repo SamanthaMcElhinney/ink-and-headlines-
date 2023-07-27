@@ -12,12 +12,16 @@ const handleSubmit = (e) => {
     handleSearch(searchQuery)
     console.log(searchQuery, "SQline 32")
     resetSearch()
-     navigate("/results");
+    navigate("/results");
+    clearSearchInput()
+}
+
+const clearSearchInput = () => {
+  setSearchQuery('')
 }
 
 return (
   <div className="searchbar-container" >
-    <div className="searcbar-container-left">selections</div>
     <form className="searchbar-container-right" onSubmit={handleSubmit}>
       <input
         type="text"

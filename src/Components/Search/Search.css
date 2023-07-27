@@ -1,9 +1,9 @@
 .searchbar-container{
     min-width: 100%;
     display:flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     border: 1px solid black;
-    padding: 1% 0%;
+    padding: 10px;
     background-color: black;
     color: #efebe5;
 }

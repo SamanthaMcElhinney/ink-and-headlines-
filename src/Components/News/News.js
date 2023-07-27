@@ -1,7 +1,7 @@
 import "./News.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-const News = ({ articles, searched }) => {
+const News = ({ articles, searched, handleReadMore }) => {
   const newsToRender = searched ? (
     articles.length ? (
       articles.map((article) => (
@@ -13,6 +13,7 @@ const News = ({ articles, searched }) => {
             description={article.description}
             image={article.urlToImage}
             date={article.publishedAt}
+            handleReadMore={handleReadMore}
           />
         </section>
       ))
@@ -29,6 +30,7 @@ const News = ({ articles, searched }) => {
           description={article.description}
           image={article.urlToImage}
           date={article.publishedAt}
+          handleReadMore={handleReadMore}
         />
       </section>
     ))

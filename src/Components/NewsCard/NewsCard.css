@@ -1,6 +1,6 @@
 .news-card {
     border: 1px solid black;
-    padding: 2px 4%;
+    padding: 1px 3%;
     text-align: center;
     display:flex;
     flex-direction: column;
@@ -35,5 +35,16 @@
 .news-date {
     margin:10px;
     justify-content: flex-end;
+    margin-left: auto;
+}
+
+.news-readmore {
+    display: inline-block;
+    padding: 0.3rem; 
+    width: 8rem;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black; 
+       justify-content: flex-end;
     margin-left: auto;
 }
