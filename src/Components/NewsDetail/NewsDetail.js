@@ -6,7 +6,6 @@ const NewsDetail = ({ article }) => {
   const params = useParams();
   console.log(params, "line 6")
   const selectedArticle = article;
-  console.log(selectedArticle, "selected article line 7")
 
   if (!selectedArticle || Object.keys(selectedArticle).length === 0) {
     return <div>Article not found</div>;

@@ -12,16 +12,22 @@ Technologies Used:
 - Javascript
 - HTML & CSS
 - React & React Router
-- Cypress
+
+# Wireframe
+
+<img width="1438" alt="wireframe" src="src/assets/wireframe.gif">
 
 # Wins & Challenges
 
 Challenges:  Create a fully functioning, intuitive UI, and MVP in 8 hours.
+- rendering details page with individual ids
+- functionality for displaying searched articles from a different end point. 
+
 Win:  Successfully produce a well-thought out React application within the time limit!
 
 # Contributors
 
-Samantha McElhinney - [GitHub]() - [LinkedIn]()
+Samantha McElhinney - [GitHub](https://github.com/SamanthaMcElhinney) - [LinkedIn](https://www.linkedin.com/in/samantha-mcelhinney/)
 
 # Future Iterations
 
