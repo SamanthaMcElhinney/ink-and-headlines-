@@ -15,7 +15,7 @@ function App() {
   const [search, setSearch] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searched, setSearched] = useState(false);
-  const [selectedArticleId, setSelectedArticleId] = useState(null); 
+  const [selectedArticleId, setSelectedArticleId] = useState(null);
 
   useEffect(() => {
     getNews().then((data) => {
@@ -28,21 +28,28 @@ function App() {
     setSearched(false);
   }, []);
 
-const handleSearch = (searchTerm) => {
-  setSearchTerm(searchTerm);
-  searchNews(searchTerm).then((data) => {
-    if (data.status === "ok") {
-      const articlesWithIds = data.articles.map((article) => ({
-        ...article,
-        id: uuidv4(),
-      }));
-      setSearch(articlesWithIds);
-    } else {
-      setError(data.message);
-    }
-    setSearched(true);
-  });
-};
+  const handleSearch = (searchTerm) => {
+    setSearchTerm(searchTerm);
+    searchNews(searchTerm)
+      .then((data) => {
+        if (data.status === "ok") {
+          const articlesWithIds = data.articles.map((article) => ({
+            ...article,
+            id: uuidv4(),
+          }));
+          setSearch(articlesWithIds);
+        } else {
+          setError(data.message);
+        }
+        setSearched(true);
+      })
+      .catch(() => {
+        setError(
+          "An error occurred while fetching the news. Please try again later.",
+    
+        );
+      });
+  };
 
   const handleReadMore = (articleId) => {
     setSelectedArticleId(articleId);
@@ -58,34 +65,38 @@ const handleSearch = (searchTerm) => {
     <main className="App">
       <Header />
       <Search handleSearch={handleSearch} resetSearch={resetSearch} />
-      <Routes>
-        <Route
-          path="/"
-          element={<News articles={news} handleReadMore={handleReadMore} />}
-        />
-        <Route
-          path="/results"
-          element={
-            <News
-              articles={searched === true ? search : news}
-              handleReadMore={handleReadMore}
-            />
-          }
-        />
-        <Route
-          path="/details/:id"
-          element={
-            <NewsDetails
-              article={
-                searched === true
-                  ? search.find((article) => article.id === selectedArticleId)
-                  : news.find((article) => article.id === selectedArticleId)
-              }
-            />
-          }
-        />
-        <Route path="*" element={<Error message={"url"} />}></Route>
-      </Routes>
+      {error ? (
+        <Error message={error} />
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={<News articles={news} handleReadMore={handleReadMore} />}
+          />
+          <Route
+            path="/results"
+            element={
+              <News
+                articles={searched === true ? search : news}
+                handleReadMore={handleReadMore}
+              />
+            }
+          />
+          <Route
+            path="/details/:id"
+            element={
+              <NewsDetails
+                article={
+                  searched === true
+                    ? search.find((article) => article.id === selectedArticleId)
+                    : news.find((article) => article.id === selectedArticleId)
+                }
+              />
+            }
+          />
+          <Route path="*" element={<Error message={"Sorry you went down the wrong path. Please try a different URL"} />} />
+        </Routes>
+      )}
     </main>
   );
 }

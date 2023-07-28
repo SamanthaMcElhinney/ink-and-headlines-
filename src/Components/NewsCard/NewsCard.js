@@ -12,10 +12,10 @@ console.log(id, "id line 5")
         <h2 className="news-title">{title}</h2>
         <p className="news-description">{description}</p>
         <img className="news-image" src={image} alt={title}></img>
-        <h6 className="news-author">
+        <p className="news-author">
           Written by: {author || "Author unknown"}
-        </h6>
-        <h4 className="news-date">{formattedDate()}</h4>
+        </p>
+        <p className="news-date">{formattedDate()}</p>
         <NavLink className="news-readmore"to={`/details/${id}`} onClick={() => handleReadMore(id)}>
           Read More
         </NavLink>

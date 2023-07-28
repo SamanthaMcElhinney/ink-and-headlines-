@@ -21,7 +21,7 @@ const clearSearchInput = () => {
 }
 
 return (
-  <div className="searchbar-container" >
+  <div className="searchbar-container">
     <form className="searchbar-container-right" onSubmit={handleSubmit}>
       <input
         type="text"

@@ -8,6 +8,9 @@
 
 <img width="1438" alt="home screen of news" src="src/assets/news.gif">
 
+### Mobile Layout
+<img width="1438" alt="home screen of news" src="src/assets/mobile-app.gif">
+
 Technologies Used:
 - Javascript
 - HTML & CSS
@@ -22,6 +25,7 @@ Technologies Used:
 Challenges:  Create a fully functioning, intuitive UI, and MVP in 8 hours.
 - rendering details page with individual ids
 - functionality for displaying searched articles from a different end point. 
+- 100% accessibilty and responsive design
 
 Win:  Successfully produce a well-thought out React application within the time limit!
 

@@ -30,12 +30,14 @@
 
 .news-author{
     margin: 0;
+    font-size: .75em;
 }
 
 .news-date {
     margin:10px;
     justify-content: flex-end;
     margin-left: auto;
+    font-size: .75em;
 }
 
 .news-readmore {
